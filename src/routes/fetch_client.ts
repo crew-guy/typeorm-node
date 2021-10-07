@@ -19,7 +19,7 @@ router.get('/api/clients/:clientId', async (req, res) => {
 })
 
 router.get('/api/clients/min/:minBalance/max/:maxBalance', async (req, res) => {
-    const { minBalance, maxBalance } = req.body
+    const { minBalance, maxBalance } = req.params
     
     const clients = await createQueryBuilder(
         'client'
@@ -27,7 +27,7 @@ router.get('/api/clients/min/:minBalance/max/:maxBalance', async (req, res) => {
     .select('client.first_name')
     .addSelect('client.last_name')
     .from(Client, 'client')
-    .where('client.balance >= :minBalance AND client.balance <= :maxBalance', {minBalance, maxBalance})
+    .where('client.balance >= :minBalance AND client.balance <= :maxBalance', {minBalance:parseInt(minBalance), maxBalance:parseInt(maxBalance)})
     .getMany()
     
     return res.json(clients)
