@@ -13,6 +13,7 @@ const main = async () => {
         console.log('connected to postgres')
     } catch (error) {
         console.log('error connecting to postgres');
+        throw new Error("error connecting to postgres")
     }
 }
 
