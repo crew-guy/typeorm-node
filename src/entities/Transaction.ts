@@ -1,4 +1,5 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from 'typeorm'
+import { Client } from './Client';
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm'
 
 enum TransactionTypes {
     WITHDRAW = "withdraw",
@@ -21,4 +22,13 @@ export class Transaction extends BaseEntity {
     })
         amount:number
     
+    
+    @ManyToOne(
+        () => Client,
+        client=> client.transactions
+    )
+    @JoinColumn({
+        name:'client_id'
+    })
+    client:Client
 }
