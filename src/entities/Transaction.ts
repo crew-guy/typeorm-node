@@ -1,7 +1,7 @@
 import { Client } from './Client';
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm'
 
-enum TransactionTypes {
+export enum TransactionType {
     WITHDRAW = "withdraw",
     DEPOSIT = 'deposit'
 }
@@ -13,7 +13,7 @@ export class Transaction extends BaseEntity {
     
     @Column({
         type: "enum",
-        enum:TransactionTypes
+        enum:TransactionType
     })
         type: string
     
