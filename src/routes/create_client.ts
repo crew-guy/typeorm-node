@@ -8,4 +8,4 @@ router.post('/api/client', (req, res) => {
 
 export {
     router as createClientRouter
-}
+}   

@@ -6,14 +6,17 @@ export class Person extends BaseEntity{
         id: number
     
     @Column()
-        first_name:number
+        first_name:string
         
     @Column()
-        last_name: number
+        middle_name:string
+    
+    @Column()
+        last_name: string
 
     @Column({
         unique: true,
-        length:10
+        length:12
     })
         card_number:string
 }
