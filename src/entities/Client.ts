@@ -1,5 +1,6 @@
+import { Banker } from './Banker';
 import { Transaction } from './Transaction';
-import { Column, Entity, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm"
+import { Column, Entity, CreateDateColumn, UpdateDateColumn, OneToMany, ManyToMany } from "typeorm"
 import { Person } from "./utils/Person"
 
 @Entity("client")
@@ -40,4 +41,10 @@ export class Client extends Person {
         transaction=>transaction.client
     )
     transactions:Transaction[]
+
+    @ManyToMany(
+        ()=> Banker
+    )
+    bankers:Banker[]
+
 }

@@ -6,7 +6,7 @@ enum TransactionTypes {
     DEPOSIT = 'deposit'
 }
 
-Entity('transactions')
+@Entity('transactions')
 export class Transaction extends BaseEntity {
     @PrimaryGeneratedColumn()
         id: number
