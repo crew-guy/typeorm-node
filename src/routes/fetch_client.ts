@@ -27,6 +27,10 @@ router.get('/api/clients/min/:minBalance/max/:maxBalance', async (req, res) => {
     .select('client.first_name')
     .addSelect('client.last_name')
     .from(Client, 'client')
+    .leftJoinAndSelect(
+        'client.transactions',
+        'transactions'
+    )
     .where('client.balance >= :minBalance AND client.balance <= :maxBalance', {minBalance:parseInt(minBalance), maxBalance:parseInt(maxBalance)})
     .getMany()
     

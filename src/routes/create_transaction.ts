@@ -19,16 +19,16 @@ router.post('/api/client/:clientId/transaction', async (req, res) => {
 
     const transaction = await Transaction.create({
         type,
-        amount,
+        amount:parseInt(amount),
         client
     })
 
     await transaction.save()
 
     if (type == TransactionType.WITHDRAW) {
-        client.balance -= amount
+        client.balance -= parseInt(amount)
     } else if (type == TransactionType.DEPOSIT) {
-        client.balance += amount
+        client.balance += parseInt(amount)
     }
 
     await client.save()
