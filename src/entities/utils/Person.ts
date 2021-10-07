@@ -16,7 +16,7 @@ export class Person extends BaseEntity{
 
     @Column({
         unique: true,
-        length:12
+        length:16
     })
         card_number:string
 }

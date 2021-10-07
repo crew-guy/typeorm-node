@@ -20,8 +20,8 @@ export class Client extends Person {
         nullable:true
     })
         additional_info: {
-                age: number,
-                hair_color:string
+            age: number,
+            hair_color:string
         }
 
     @Column({
@@ -46,5 +46,4 @@ export class Client extends Person {
         ()=> Banker
     )
     bankers:Banker[]
-
 }
