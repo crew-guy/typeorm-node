@@ -4,6 +4,9 @@ import { Banker } from './entities/Banker';
 import { Client } from './entities/Client';
 import express from 'express'
 
+// Routes
+import {createClientRouter} from './routes/create_client'
+
 const app = express()
 const port = process.env.PORT || 8080
 
@@ -21,6 +24,9 @@ const main = async () => {
             synchronize:true
         })
         console.log('connected to postgres')
+
+        app.use(express.json())
+        app.use(createClientRouter)
         app.listen(port, ()=> console.log(`express app running on port ${port}`))
     } catch (error) {
         console.log('error connecting to postgres');
