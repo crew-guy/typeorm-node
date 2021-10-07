@@ -1,4 +1,4 @@
-import { Column, Entity, BaseEntity, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm"
+import { Column, Entity, CreateDateColumn, UpdateDateColumn } from "typeorm"
 import { Person } from "./utils/Person"
 
 @Entity("client")
